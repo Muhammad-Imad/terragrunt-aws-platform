@@ -1,0 +1,28 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terragrunt
+.terragrunt-cache/
+
+# Variables / secrets — keep example tfvars, ignore everything else
+*.tfvars
+*.tfvars.json
+!examples/**/*.tfvars
+
+# Plan output
+*.tfplan
+*.plan
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store

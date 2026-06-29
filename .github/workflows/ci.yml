@@ -82,4 +82,10 @@ jobs:
       # vpc -> eks graph on a clean checkout.
       - name: terragrunt validate
         working-directory: ${{ matrix.unit }}
-        run: terragrunt validate --terragrunt-no-auto-init=false -backend=false
+        env:
+          TERRAGRUNT_NON_INTERACTIVE: "true"
+        run: |
+          # Init providers WITHOUT a backend or cloud creds; dependency mock_outputs
+          # (declared in _envcommon) resolve the vpc -> eks graph on a clean checkout.
+          terragrunt init -backend=false
+          terragrunt validate

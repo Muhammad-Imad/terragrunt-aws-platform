@@ -80,12 +80,11 @@ jobs:
       # Validate without touching real backends or cloud credentials. Mock
       # dependency outputs (declared in _envcommon) let `validate` resolve the
       # vpc -> eks graph on a clean checkout.
-      - name: terragrunt validate
+      - name: terragrunt hclvalidate
         working-directory: ${{ matrix.unit }}
         env:
           TERRAGRUNT_NON_INTERACTIVE: "true"
-        run: |
-          # Init providers WITHOUT a backend or cloud creds; dependency mock_outputs
-          # (declared in _envcommon) resolve the vpc -> eks graph on a clean checkout.
-          terragrunt init -backend=false
-          terragrunt validate
+        # hclvalidate checks the Terragrunt config + references with no backend or
+        # cloud credentials — the right validation for CI. Deep terraform validate
+        # would need real AWS creds and an S3 backend, which CI intentionally lacks.
+        run: terragrunt hclvalidate

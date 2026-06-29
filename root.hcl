@@ -75,22 +75,9 @@ generate "provider" {
   EOF
 }
 
-generate "versions" {
-  path      = "versions.tf"
-  if_exists = "overwrite_terragrunt"
-  contents  = <<-EOF
-    terraform {
-      required_version = ">= 1.5"
-
-      required_providers {
-        aws = {
-          source  = "hashicorp/aws"
-          version = ">= 5.0"
-        }
-      }
-    }
-  EOF
-}
+# NOTE: versions.tf is intentionally NOT generated here — each module ships its
+# own versions.tf (required_providers), including s3-cloudfront's us_east_1
+# configuration_alias. Generating it centrally would clobber those declarations.
 
 # Inputs merged into every unit. Leaf units and _envcommon add to these.
 inputs = {

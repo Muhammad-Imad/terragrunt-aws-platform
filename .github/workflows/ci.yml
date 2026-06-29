@@ -42,7 +42,7 @@ jobs:
       - name: tflint
         run: |
           tflint --init
-          tflint --recursive --minimum-failure-severity=warning
+          tflint --recursive --minimum-failure-severity=error
 
       - name: tfsec
         uses: aquasecurity/tfsec-action@v1.0.3

@@ -19,11 +19,11 @@ locals {
 
   # Tags applied to every taggable resource across the platform.
   common_tags = {
-    ManagedBy   = "terragrunt"
-    Org         = local.org
-    Account     = local.account_name
-    Region      = local.aws_region
-    Repository  = "terragrunt-aws-platform"
+    ManagedBy  = "terragrunt"
+    Org        = local.org
+    Account    = local.account_name
+    Region     = local.aws_region
+    Repository = "terragrunt-aws-platform"
   }
 }
 

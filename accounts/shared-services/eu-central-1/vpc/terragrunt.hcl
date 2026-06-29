@@ -9,7 +9,7 @@ include "envcommon" {
 
 # A smaller, single-NAT VPC is fine for shared tooling/services.
 inputs = {
-  cidr_block       = "10.10.0.0/16"
-  az_count         = 3
+  cidr_block         = "10.10.0.0/16"
+  az_count           = 3
   single_nat_gateway = true
 }

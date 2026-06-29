@@ -34,12 +34,12 @@ inputs = {
   subnet_ids = dependency.vpc.outputs.private_subnet_ids
 
   # Defaults; leaf units override Kubernetes version and node group sizing.
-  kubernetes_version                   = "1.30"
-  endpoint_public_access               = true
-  endpoint_public_access_cidrs         = ["0.0.0.0/0"] # tighten per environment
-  enable_irsa                          = true
-  enabled_cluster_log_types            = ["api", "audit", "authenticator"]
-  cluster_addons                       = ["coredns", "kube-proxy", "vpc-cni"]
+  kubernetes_version           = "1.30"
+  endpoint_public_access       = true
+  endpoint_public_access_cidrs = ["0.0.0.0/0"] # tighten per environment
+  enable_irsa                  = true
+  enabled_cluster_log_types    = ["api", "audit", "authenticator"]
+  cluster_addons               = ["coredns", "kube-proxy", "vpc-cni"]
 
   tags = {
     Component = "eks"
